@@ -1,0 +1,56 @@
+<div class="row">
+  <!-- Liste des voitures à gauche -->
+  <div class="col-md-6">
+    <div class="card">
+      <ul class="list-group">
+        <li
+          class="list-group-item d-flex justify-content-between align-items-center"
+          *ngFor="let car of cars"
+          [class.active]="selectedCar?.id === car.id"
+          (click)="selectCar(car)"
+          style="cursor: pointer"
+        >
+          <h5 class="mb-0">{{ car.marque }} - {{ car.modele }}</h5>
+          <img
+            class="rounded w-25 h-auto"
+            [src]="car.image"
+            alt="{{ car.marque }} {{ car.modele }}"
+          />
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Détails de la voiture à droite -->
+  <div class="col-md-6" *ngIf="selectedCar">
+    <div class="card">
+      <div class="card-body text-center">
+        <h3 class="card-title">Détails de la voiture</h3>
+
+        <img
+          *ngIf="selectedCar.image"
+          [src]="selectedCar.image"
+          class="rounded w-75 h-auto mb-3"
+          alt="{{ selectedCar.marque }}"
+        />
+
+        <h4 class="fw-bold">
+          {{ selectedCar.marque }} {{ selectedCar.modele }}
+        </h4>
+        <p><strong>Couleur :</strong> {{ selectedCar.couleur }}</p>
+
+        <div class="d-flex justify-content-center mt-3">
+          <button
+            class="btn btn-primary me-3"
+            [routerLink]="['/car-edit', selectedCar.id]"
+          >
+            Modifier
+          </button>
+          <button class="btn btn-danger" (click)="deleteCar(selectedCar.id)">
+            Supprimer
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

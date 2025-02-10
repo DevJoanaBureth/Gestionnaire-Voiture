@@ -1,0 +1,19 @@
+[
+  { "id": 1,
+  "marque": "Peugeot",
+  "modele": "106",
+  "couleur": "Rouge",
+  "image": "assets/images/peugeot_106.jpg" },
+
+  { "id": 2,
+  "marque": "Ford",
+  "modele": "Focus",
+  "couleur": "Bleue",
+  "image": "assets/images/ford_focus.jpg" },
+
+  { "id": 3,
+  "marque": "Citroen",
+  "modele": "C3",
+  "couleur": "Blanche",
+  "image": "assets/images/citroen_c3.jpg" }
+]

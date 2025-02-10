@@ -1,0 +1,94 @@
+<div class="d-flex justify-content-center align-items-center">
+  <div class="p-4 w-50">
+    <div class="card">
+      <div class="card-body">
+        <form [formGroup]="carForm" (ngSubmit)="onSubmit()">
+          <div class="mb-4">
+            <label for="marque" class="form-label">Marque</label>
+            <input
+              type="text"
+              class="form-control"
+              id="marque"
+              formControlName="marque"
+              placeholder="Marque"
+            />
+            <span
+              *ngIf="
+                carForm.get('marque')?.invalid && carForm.get('marque')?.touched
+              "
+            >
+              <span id="message-error" class="text-danger">
+                La marque de la voiture est obligatoire.
+              </span>
+            </span>
+          </div>
+
+          <div class="mb-4">
+            <label for="modele" class="form-label">Modèle</label>
+            <input
+              type="text"
+              class="form-control"
+              id="modele"
+              formControlName="modele"
+              placeholder="Modèle"
+            />
+            <span
+              *ngIf="
+                carForm.get('modele')?.invalid && carForm.get('modele')?.touched
+              "
+            >
+              <span id="message-error" class="text-danger">
+                Le modèle de la voiture est obligatoire.
+              </span>
+            </span>
+          </div>
+
+          <div class="mb-4">
+            <label for="couleur" class="form-label">Couleur</label>
+            <input
+              type="text"
+              class="form-control"
+              id="couleur"
+              formControlName="couleur"
+              placeholder="Couleur"
+            />
+            <span
+              *ngIf="
+                carForm.get('couleur')?.invalid &&
+                carForm.get('couleur')?.touched
+              "
+            >
+              <span id="message-error" class="text-danger">
+                La couleur de la voiture est obligatoire.
+              </span>
+            </span>
+          </div>
+
+          <div class="mb-4">
+            <label for="image" class="form-label">Image</label>
+            <input
+              class="form-control"
+              type="file"
+              id="image"
+              placeholder="Image"
+              (change)="onImageChange($event)"
+              accept="image/*"
+            />
+
+            <div *ngIf="imagePreview">
+              <img [src]="imagePreview" alt="Image prévisualisée" width="200" />
+            </div>
+          </div>
+
+          <button
+            type="submit"
+            class="btn btn-primary w-100"
+            [disabled]="carForm.invalid"
+          >
+            Sauvegarder
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

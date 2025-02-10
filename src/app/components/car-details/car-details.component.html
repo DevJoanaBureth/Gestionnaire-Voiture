@@ -1,0 +1,23 @@
+<div *ngIf="selectedCar" class="card">
+  <div class="card-body">
+    <h3 class="display-3">Détails de la voiture</h3>
+
+    <img
+      [src]="selectedCar.image"
+      class="rounded w-75 h-auto"
+      alt="{{ selectedCar.marque }}"
+    />
+
+    <h4 class="display-4">{{ selectedCar.marque }} {{ selectedCar.modele }}</h4>
+    <p><strong>Couleur :</strong> {{ selectedCar.couleur }}</p>
+    <button
+      class="btn btn-primary me-3"
+      [routerLink]="['/edit', selectedCar.id]"
+    >
+      Modifier
+    </button>
+    <button class="btn btn-danger" (click)="deleteCar(selectedCar.id)">
+      Supprimer
+    </button>
+  </div>
+</div>
